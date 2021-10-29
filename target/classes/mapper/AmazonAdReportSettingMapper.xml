@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.waymap.o2o.cloud.provider.amazon.ad.dao.AmazonAdReportSettingMapper">
+    <select id="getAvailableReportSetting" parameterType="int"
+            resultType="com.waymap.o2o.cloud.provider.amazon.ad.entity.AmazonAdReportSetting">
+        SELECT *
+        FROM `o2o_amazon_ad_report_setting`
+        <where>
+            information_id=#{informationId}
+            AND available = true
+        </where>
+    </select>
+</mapper>

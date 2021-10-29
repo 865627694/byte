@@ -1,0 +1,57 @@
+[
+  {
+    "profileId": 1178772034855750,
+    "countryCode": "CA",
+    "currencyCode": "CAD",
+    "dailyBudget": 999999999,
+    "timezone": "America/Los_Angeles",
+    "accountInfo": {
+      "marketplaceStringId": "A2EUQ1WTGCTBG2",
+      "id": "A347GK6YRL6XBR",
+      "type": "seller",
+      "name": "Yescom",
+      "validPaymentMethod": true
+    }
+  },
+  {
+    "profileId": 2897630487438663,
+    "countryCode": "MX",
+    "currencyCode": "MXN",
+    "dailyBudget": 250,
+    "timezone": "America/Los_Angeles",
+    "accountInfo": {
+      "marketplaceStringId": "A1AM78C64UM0Y8",
+      "id": "A347GK6YRL6XBR",
+      "type": "seller",
+      "name": "Yescom",
+      "validPaymentMethod": true
+    }
+  },
+  {
+    "profileId": 1611285199905576,
+    "countryCode": "US",
+    "currencyCode": "USD",
+    "timezone": "America/Los_Angeles",
+    "accountInfo": {
+      "marketplaceStringId": "ATVPDKIKX0DER",
+      "id": "ENTITY2WVYXT6813S2Z",
+      "type": "agency",
+      "name": "Attribution: Yescom (US)",
+      "subType": "AMAZON_ATTRIBUTION"
+    }
+  },
+  {
+    "profileId": 2775040121581108,
+    "countryCode": "US",
+    "currencyCode": "USD",
+    "dailyBudget": 2100000000000,
+    "timezone": "America/Los_Angeles",
+    "accountInfo": {
+      "marketplaceStringId": "ATVPDKIKX0DER",
+      "id": "A347GK6YRL6XBR",
+      "type": "seller",
+      "name": "Yescom",
+      "validPaymentMethod": true
+    }
+  }
+]

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.waymap.o2o.cloud.provider.amazon.ad.dao.AmazonAdReportMapper">
+    <insert id="insertOrUpdateBatch" parameterType="com.waymap.o2o.cloud.provider.amazon.ad.entity.AmazonAdReport">
+
+        INSERT INTO o2o_amazon_ad_report ( id, report_set_id, information_id, internal_id,PROFILE, record_type, report_type, content, report_date, create_date, update_date, ns_internal_id, success, message )
+        VALUES
+            ( #{report.id},#{report.reportSetId},#{report.informationId},#{report.internalId},#{report.profile},#{report.recordType},#{report.reportType},#{report.content},#{report.reportDate},#{report.createDate},#{report.updateDate},#{report.nsInternalId},#{report.success},#{report.message}
+            )
+            ON DUPLICATE KEY UPDATE
+            id =
+        VALUES
+            ( id ),
+            report_set_id =
+        VALUES
+            ( report_set_id ),
+            information_id =
+        VALUES
+            ( information_id ),
+            internal_id =
+        VALUES
+            ( internal_id ),
+            record_type =
+        VALUES
+            ( record_type ),
+            report_type =
+        VALUES
+            ( report_type ),
+            content =
+        VALUES
+            ( content ),
+            report_date =
+        VALUES
+            ( report_date ),
+            create_date =
+        VALUES
+            ( create_date ),
+            update_date =
+        VALUES
+            ( update_date ),
+            ns_internal_id =
+        VALUES
+            ( ns_internal_id ),
+            success =
+        VALUES
+            ( success ),
+            message =
+        VALUES
+            ( message )
+
+    </insert>
+
+    <select id="getReport" resultType="com.waymap.o2o.cloud.provider.amazon.ad.vo.NsAmazonAdVO">
+
+
+                SELECT
+                    information_id,
+                    internal_id,
+                    profile,
+                    record_type,
+                    report_type,
+                    content,
+                    report_date,
+                    create_date,
+                    update_date,
+                    ns_internal_id,
+                    success,
+                    message
+                FROM
+                    o2o_amazon_ad_report
+                    WHERE
+                    information_id = #{informationId} AND profile= #{profile} and record_type = #{recordType} and report_type = #{reportType};
+
+    </select>
+</mapper>

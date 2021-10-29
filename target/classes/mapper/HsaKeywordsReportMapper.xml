@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.waymap.o2o.cloud.provider.amazon.ad.dao.HsaKeywordsReportMapper">
+    <insert id="insertOrUpdateBatch" parameterType="java.util.List">
+        INSERT INTO o2o_amazon_ad_hsa_keywords_report(
+        id,report_set_id,campaign_name,campaign_id,campaign_status,campaign_budget,campaign_budget_type,ad_group_name,ad_group_id,keyword_text,keyword_bid,keyword_status,target_id,targeting_expression,targeting_text,targeting_type,match_type,impressions,clicks,cost,attributed_detail_page_views_clicks14d,attributed_sales14d,attributed_sales14d_same_sku,attributed_conversions14d,attributed_conversions14d_same_sku,attributed_orders_new_to_brand14d,attributed_orders_new_to_brand_percentage14d,attributed_order_rate_new_to_brand14d,attributed_sales_new_to_brand14d,attributed_sales_new_to_brand_percentage14d,attributed_units_ordered_new_to_brand14d,attributed_units_ordered_new_to_brand_percentage14d,units_sold14d,dpv14d,report_date,create_date,update_date,ns_internal_id,success,message
+        )VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.id},#{item.reportSetId},#{item.campaignName},#{item.campaignId},#{item.campaignStatus},#{item.campaignBudget},#{item.campaignBudgetType},#{item.adGroupName},#{item.adGroupId},#{item.keywordText},#{item.keywordBid},#{item.keywordStatus},#{item.targetId},#{item.targetingExpression},#{item.targetingText},#{item.targetingType},#{item.matchType},#{item.impressions},#{item.clicks},#{item.cost},#{item.attributedDetailPageViewsClicks14d},#{item.attributedSales14d},#{item.attributedSales14dSameSku},#{item.attributedConversions14d},#{item.attributedConversions14dSameSku},#{item.attributedOrdersNewToBrand14d},#{item.attributedOrdersNewToBrandPercentage14d},#{item.attributedOrderRateNewToBrand14d},#{item.attributedSalesNewToBrand14d},#{item.attributedSalesNewToBrandPercentage14d},#{item.attributedUnitsOrderedNewToBrand14d},#{item.attributedUnitsOrderedNewToBrandPercentage14d},#{item.unitsSold14d},#{item.dpv14d},#{item.reportDate},#{item.createDate},#{item.updateDate},#{item.nsInternalId},#{item.success},#{item.message}
+            )
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        id=VALUES(id),report_set_id=VALUES(report_set_id),campaign_name=VALUES(campaign_name),campaign_id=VALUES(campaign_id),campaign_status=VALUES(campaign_status),campaign_budget=VALUES(campaign_budget),campaign_budget_type=VALUES(campaign_budget_type),ad_group_name=VALUES(ad_group_name),ad_group_id=VALUES(ad_group_id),keyword_text=VALUES(keyword_text),keyword_bid=VALUES(keyword_bid),keyword_status=VALUES(keyword_status),target_id=VALUES(target_id),targeting_expression=VALUES(targeting_expression),targeting_text=VALUES(targeting_text),targeting_type=VALUES(targeting_type),match_type=VALUES(match_type),impressions=VALUES(impressions),clicks=VALUES(clicks),cost=VALUES(cost),attributed_detail_page_views_clicks14d=VALUES(attributed_detail_page_views_clicks14d),attributed_sales14d=VALUES(attributed_sales14d),attributed_sales14d_same_sku=VALUES(attributed_sales14d_same_sku),attributed_conversions14d=VALUES(attributed_conversions14d),attributed_conversions14d_same_sku=VALUES(attributed_conversions14d_same_sku),attributed_orders_new_to_brand14d=VALUES(attributed_orders_new_to_brand14d),attributed_orders_new_to_brand_percentage14d=VALUES(attributed_orders_new_to_brand_percentage14d),attributed_order_rate_new_to_brand14d=VALUES(attributed_order_rate_new_to_brand14d),attributed_sales_new_to_brand14d=VALUES(attributed_sales_new_to_brand14d),attributed_sales_new_to_brand_percentage14d=VALUES(attributed_sales_new_to_brand_percentage14d),attributed_units_ordered_new_to_brand14d=VALUES(attributed_units_ordered_new_to_brand14d),attributed_units_ordered_new_to_brand_percentage14d=VALUES(attributed_units_ordered_new_to_brand_percentage14d),units_sold14d=VALUES(units_sold14d),dpv14d=VALUES(dpv14d),report_date=VALUES(report_date),create_date=VALUES(create_date),update_date=VALUES(update_date),ns_internal_id=VALUES(ns_internal_id),success=VALUES(success),message=VALUES(message)
+    </insert>
+    <select id="getFailureOrdersByAccountId" parameterType="map"
+            resultType="com.waymap.o2o.cloud.provider.amazon.ad.entity.HsaKeywordsReport">
+        SELECT * FROM o2o_amazon_ad_hsa_keywords_report
+        <where>
+            AND (success = FALSE OR success IS NULL)
+        </where>
+    </select>
+    <update id="updatePushResult" parameterType="com.waymap.o2o.cloud.provider.amazon.ad.entity.HsaKeywordsReport">
+        <foreach collection="list" item="bean" index="index" open="" close="" separator=";">
+            UPDATE o2o_amazon_ad_hsa_keywords_report
+            <set>
+                ns_internal_id=#{bean.nsInternalId},success=#{bean.success},message=#{bean.message},updateDate=now()
+            </set>
+            <where>
+                id = #{bean.id}
+            </where>
+        </foreach>
+    </update>
+</mapper>
